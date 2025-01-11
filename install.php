@@ -6,9 +6,9 @@ $stmt = $conn->prepare("DROP TABLE IF EXISTS tblstudents;
 
 CREATE TABLE tblstudents
 (studentid INT(5) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-gender VARCHAR(1) NOT NULL,
 surname VARCHAR(20) NOT NULL,
 forename VARCHAR(20) NOT NULL,
+gender VARCHAR(1) NOT NULL,
 password VARCHAR(20) NOT NULL,
 house VARCHAR(20) NOT NULL,
 yearg INT(2) NOT NULL,
@@ -56,7 +56,7 @@ $stmt->closeCursor();
 echo"<br>tblstudentloans created";
 
 $hashed_password = password_hash("password", PASSWORD_DEFAULT);
-    $stmt4 = $conn->prepare("INSERT INTO Tblstudents(studentid,gender,surname,forename,Password,house,yearg)VALUES 
-    (NULL,'M','Khametov','Mark',:hp,'Crosby',12)
+    $stmt4 = $conn->prepare("INSERT INTO Tblstudents(studentid,surname,forename,gender,Password,yearg)VALUES 
+    (NULL,'Khametov','Mark','M',:hp,12)
     ");
 ?>
