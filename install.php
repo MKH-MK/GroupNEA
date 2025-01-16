@@ -26,7 +26,7 @@ try {
     username VARCHAR(20) NOT NULL,
     surname VARCHAR(20) NOT NULL,
     forename VARCHAR(20) NOT NULL,
-    password VARCHAR(255) NOT NULL,
+    passwd VARCHAR(255) NOT NULL,
     house VARCHAR(20) NOT NULL,
     yearg INT(2) NOT NULL,
     UNIQUE KEY surname_forename (surname, forename)
@@ -72,8 +72,8 @@ try {
 
     // Insert initial data into tblstudents
 
-    $hashed_password = password_hash("password", PASSWORD_DEFAULT);
-    $stmt = $conn->prepare("INSERT INTO tblstudents (studentid, username, gender, surname, forename, password, house, yearg) VALUES 
+    $hashed_password = password_hash("passwd", PASSWORD_DEFAULT);
+    $stmt = $conn->prepare("INSERT INTO tblstudents (studentid, username, gender, surname, forename, passwd, house, yearg) VALUES 
     (NULL, 'mark.k', 'M', 'Khametov', 'Mark', :hp, 'Crosby', 12)");
    
     $stmt->bindParam(':hp', $hashed_password);

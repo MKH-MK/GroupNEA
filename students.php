@@ -18,8 +18,16 @@
             <option value="M">Male</option>
             <option value="F">Female</option>
         </select>
+        
     <br>
+    <br>
+
+    <input type="submit" value="Add Student">
+
     </form>
+
+
+    <br>
 
     <h2>Current Users:</h2>
     
