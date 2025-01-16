@@ -22,13 +22,13 @@ try {
 
     CREATE TABLE tblstudents (
     studentid INT(5) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    gender VARCHAR(1) NOT NULL,
     username VARCHAR(20) NOT NULL,
     surname VARCHAR(20) NOT NULL,
     forename VARCHAR(20) NOT NULL,
     passwd VARCHAR(255) NOT NULL,
-    house VARCHAR(20) NOT NULL,
+    gender VARCHAR(1) NOT NULL,
     yearg INT(2) NOT NULL,
+    house VARCHAR(20) NOT NULL,
     UNIQUE KEY surname_forename (surname, forename)
     );");
 
@@ -46,12 +46,23 @@ try {
     authors TEXT NOT NULL,
     cover VARCHAR(255) NOT NULL,
     blurb TEXT NOT NULL,
-    rating INT(1) NOT NULL
+    agerating INT(1) NOT NULL
     );");
 
     $stmt->execute();
     $stmt->closeCursor();
     echo "<br>tblbooks created";
+
+
+    // Create tblreviews table
+    // $stmt = $conn->prepare("DROP TABLE IF EXISTS tblreviews;
+    
+    // );");
+
+    // $stmt->execute();
+    // $stmt->closeCursor();
+    // echo "<br>tblreviews created";
+
 
     // Create tblstudentloans table
 
@@ -73,8 +84,8 @@ try {
     // Insert initial data into tblstudents
 
     $hashed_password = password_hash("passwd", PASSWORD_DEFAULT);
-    $stmt = $conn->prepare("INSERT INTO tblstudents (studentid, username, gender, surname, forename, passwd, house, yearg) VALUES 
-    (NULL, 'mark.k', 'M', 'Khametov', 'Mark', :hp, 'Crosby', 12)");
+    $stmt = $conn->prepare("INSERT INTO tblstudents (studentid, username, surname, forename, passwd, gender, house, yearg) VALUES 
+    (NULL, 'mark.k', 'Khametov', 'Mark', :hp, 'M', 'Crosby', 12)");
    
     $stmt->bindParam(':hp', $hashed_password);
     $stmt->execute();
