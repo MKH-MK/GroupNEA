@@ -29,6 +29,7 @@ try {
     gender VARCHAR(1) NOT NULL,
     yearg INT(2) NOT NULL,
     house VARCHAR(20) NOT NULL,
+    role TINYINT(1),
     UNIQUE KEY surname_forename (surname, forename)
     );");
 
@@ -41,7 +42,7 @@ try {
     $stmt = $conn->prepare("DROP TABLE IF EXISTS tblbooks;
     CREATE TABLE tblbooks (
     bookid INT(5) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    isbn VARCHAR(13) NOT NULL,
+    isbn VARCHAR(10) NOT NULL,
     title VARCHAR(255) NOT NULL,
     authors TEXT NOT NULL,
     cover VARCHAR(255) NOT NULL,
@@ -84,8 +85,8 @@ try {
     // Insert initial data into tblstudents
 
     $hashed_password = password_hash("passwd", PASSWORD_DEFAULT);
-    $stmt = $conn->prepare("INSERT INTO tblstudents (studentid, username, surname, forename, passwd, gender, house, yearg) VALUES 
-    (NULL, 'mark.k', 'Khametov', 'Mark', :hp, 'M', 'Crosby', 12)");
+    $stmt = $conn->prepare("INSERT INTO tblstudents (studentid, username, surname, forename, passwd, gender, house, yearg, role) VALUES 
+    (NULL, 'mark.k', 'Khametov', 'Mark', :hp, 'M', 'Crosby', 12, 2)");
    
     $stmt->bindParam(':hp', $hashed_password);
     $stmt->execute();
