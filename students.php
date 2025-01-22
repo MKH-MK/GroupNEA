@@ -21,7 +21,7 @@
 
         <br>
         
-    <input type="radio" name="role" value="Pupil" checked> Pupil<br>
+    <input type="radio" name="role" value="Pupil" checked> Student<br>
     <input type="radio" name="role" value="Teacher"> Teacher<br>
     <input type="radio" name="role" value="Admin"> Admin<br>
         
@@ -38,9 +38,12 @@
     <h2>Current Users:</h2>
     
     <?php
+    
     include_once("connection.php");
+    
     $stmt = $conn->prepare("SELECT * FROM tblstudents");
     $stmt->execute();
+    
     while ($row =$stmt->fetch(PDO::FETCH_ASSOC))
         {   
             #print_r($row);
