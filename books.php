@@ -12,6 +12,7 @@
     Cover image:<input type="text" name="cover"><br>
     BLURB:<br><textarea name="blurb" rows="6" cols="75"></textarea><br>
     Age Rating:<input type="text" name="agerating"><br>
+    How many copies:<input type="text" name="available"><br>
 
   <input type="submit" value="Add Book">
 </form>
@@ -28,7 +29,7 @@
     while ($row =$stmt->fetch(PDO::FETCH_ASSOC))
         {   
             #print_r($row);
-            echo("<h4>".$row["bookid"].$row["title"]."</h4>");
+            echo("<h4>".$row["bookid"]." > ".$row["title"]." Available: ".$row["available"]."</h4>");
         }
     ?>
   

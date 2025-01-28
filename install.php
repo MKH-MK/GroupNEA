@@ -29,8 +29,7 @@ try {
     gender VARCHAR(1) NOT NULL,
     yearg INT(2) NOT NULL,
     house VARCHAR(20) NOT NULL,
-    role TINYINT(1),
-    UNIQUE KEY surname_forename (surname, forename)
+    role TINYINT(1)
     );");
 
     $stmt->execute();
@@ -47,7 +46,8 @@ try {
     authors TEXT NOT NULL,
     cover VARCHAR(255) NOT NULL,
     blurb TEXT NOT NULL,
-    agerating INT(1) NOT NULL
+    agerating INT(2) NOT NULL,
+    available INT(2) NOT NULL
     );");
 
     $stmt->execute();
@@ -74,9 +74,7 @@ try {
     loanid INT(5) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     bookid INT(5) NOT NULL,
     userid INT(5) NOT NULL,
-    endloan DATE,
-    PRIMARY KEY(bookid, userid),
-    UNIQUE KEY studentid_bookid (bookid, userid)
+    endloan DATE
     );");
 
     $stmt->execute();

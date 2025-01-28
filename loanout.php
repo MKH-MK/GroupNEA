@@ -27,7 +27,7 @@
         
         include_once("connection.php");
        
-        $stmt = $conn->prepare("SELECT * FROM tblbooks ORDER BY title ASC");
+        $stmt = $conn->prepare("SELECT * FROM tblbooks WHERE available>0 ORDER BY title ASC");
         $stmt->execute();
         
         while ($row =$stmt->fetch(PDO::FETCH_ASSOC))

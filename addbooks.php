@@ -9,8 +9,8 @@ try {
     print_r($_POST);
     echo($_POST["isbn"]);
 
-    $stmt = $conn->prepare("INSERT INTO tblbooks (bookid,isbn,title,authors,cover,blurb,agerating)
-    VALUES (NULL,:isbn,:title,:authors,:cover,:blurb,:agerating)");
+    $stmt = $conn->prepare("INSERT INTO tblbooks (bookid,isbn,title,authors,cover,blurb,agerating,available)
+    VALUES (NULL,:isbn,:title,:authors,:cover,:blurb,:agerating,:available)");
     
     $stmt->bindParam(':isbn', $_POST["isbn"]);
     $stmt->bindParam(':title', $_POST["title"]);
@@ -18,6 +18,7 @@ try {
     $stmt->bindParam(':cover', $_POST["cover"]);
     $stmt->bindParam(':blurb', $_POST["blurb"]);
     $stmt->bindParam(':agerating', $_POST["agerating"]);
+    $stmt->bindParam(':available', $_POST["available"]);
 
     $stmt->execute();
 
