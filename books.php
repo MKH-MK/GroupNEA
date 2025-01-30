@@ -29,7 +29,7 @@
     while ($row =$stmt->fetch(PDO::FETCH_ASSOC))
         {   
             #print_r($row);
-            echo("<h4>".$row["bookid"]." > ".$row["title"]." Available: ".$row["available"]."</h4>");
+            echo("<h4>".$row["bookid"]." >> ".$row["title"].". Available: ".$row["available"]."</h4>");
         }
     ?>
   
