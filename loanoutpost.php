@@ -10,7 +10,7 @@ try {
     echo($_POST["bookid"]);
 
     $stmt = $conn->prepare("INSERT INTO tblstudentloans (loanid,bookid,userid,endloan)
-    VALUES (NULL,:bookid,:userid,:endloan");
+    VALUES (NULL,:bookid,:userid,:endloan)");
     $stmt->bindParam(':bookid', $_POST["bookid"]);
     $stmt->bindParam(':userid', $_POST["userid"]);
     $stmt->bindParam(':endloan', $_POST["endloan"]);

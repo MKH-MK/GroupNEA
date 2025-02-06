@@ -6,7 +6,7 @@
 <body>
     
     <form action="loanoutpost.php" method = "post">
-    <select name ="student">
+    <select name ="userid">
     
     <?php
         include_once("connection.php");
@@ -17,11 +17,12 @@
         while ($row =$stmt->fetch(PDO::FETCH_ASSOC))
             {
                 #print_r($row);
-                echo("<option value=".$row["studentid"].">".$row["surname"]." , ".$row["forename"]."</option>");
+                echo("<option value=".$row["userid"].">".$row["surname"]." , ".$row["forename"]."</option>");
             }
     ?>
     </select>
-    <select name ="book">
+    <br>
+    <select name ="bookid">
     
     <?php
         
@@ -37,6 +38,10 @@
             }
     ?>
     </select>
+    <br>
+
+    <input type="date" name="endloan" required>
+    <br>
     <input type="submit" value="Confirm Loan">
 
 </form>

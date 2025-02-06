@@ -23,7 +23,7 @@ try {
     $Username=substr($_POST["forename"],0,1).".".$_POST["surname"];
     $hashed_password = password_hash($_POST["passwd"], PASSWORD_DEFAULT);
 
-    $stmt = $conn->prepare("INSERT INTO tblstudents (studentID,username,surname,forename,passwd,gender,house,yearg,role)
+    $stmt = $conn->prepare("INSERT INTO tblstudents (userid,username,surname,forename,passwd,gender,house,yearg,role)
     VALUES (null,:username,:surname,:forename,:passwd,:gender,:house,:year,:role)");
 
     $stmt->bindParam(':username', $Username);

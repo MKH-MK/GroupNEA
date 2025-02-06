@@ -21,7 +21,7 @@ try {
     $stmt = $conn->prepare("DROP TABLE IF EXISTS tblstudents;
 
     CREATE TABLE tblstudents (
-    studentid INT(5) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    userid INT(5) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(20) NOT NULL,
     surname VARCHAR(20) NOT NULL,
     forename VARCHAR(20) NOT NULL,
@@ -74,7 +74,7 @@ try {
     loanid INT(5) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     bookid INT(5) NOT NULL,
     userid INT(5) NOT NULL,
-    endloan DATE
+    endloan DATE NOT NULL
     );");
 
     $stmt->execute();
@@ -84,7 +84,7 @@ try {
     // Insert initial data into tblstudents
 
     $hashed_password = password_hash("passwd", PASSWORD_DEFAULT);
-    $stmt = $conn->prepare("INSERT INTO tblstudents (studentid, username, surname, forename, passwd, gender, house, yearg, role) VALUES 
+    $stmt = $conn->prepare("INSERT INTO tblstudents (userid, username, surname, forename, passwd, gender, house, yearg, role) VALUES 
     (NULL, 'Mark.KHA', 'Khametov', 'Mark', :hp, 'M', 'Crosby', 12, 2)");
    
     $stmt->bindParam(':hp', $hashed_password);
