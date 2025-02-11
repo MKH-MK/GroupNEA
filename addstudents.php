@@ -37,12 +37,14 @@ try {
 
     $stmt->execute();  
 
-    header('Location: students.php');
-
+    echo "<div class='alert alert-success text-center'>Registration successful! <a href='login.php'>Login here</a></div>";
+    
+    header('Location: homepage.php');
 
 } catch (PDOException $e) {
 
     echo "Error: " . $e->getMessage();
+    echo "<div class='alert alert-danger text-center'>Error: " . $e->getMessage() . "</div>";
 
 }
 

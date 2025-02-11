@@ -5,7 +5,7 @@
 </head>
 <body>
     
-    <form action="loanoutpost.php" method = "post">
+    <form action="loaninpost.php" method = "post">
     <select name ="userid">
     
     <?php
