@@ -25,22 +25,27 @@
     <br>
 
     <label for="bookid">Select Book:</label>
-    <select name ="bookid">
-    
-    <?php
-        
-        include_once("connection.php");
-       
-        $stmt = $conn->prepare("SELECT l.bookid, b.title FROM tblstudentloans l INNER JOIN tblbooks b ON l.bookid = b.bookid ORDER BY b.title ASC");
-        $stmt->execute();
+    <select name="bookid">
+    <option value="">Select a book</option>
             
-        
-        while ($row =$stmt->fetch(PDO::FETCH_ASSOC))
+            <?php
+
+                include_once("connection.php");
+    
+                if (isset($_POST['userid']) && !empty($_POST['userid'])) {
+                    $userid = $_POST['userid'];
+                    $stmt = $conn->prepare("SELECT l.bookid, b.title FROM tblstudentloans l INNER JOIN tblbooks b ON l.bookid = b.bookid WHERE l.userid = ? ORDER BY b.title ASC");
+                    $stmt->execute([$userid]);
+                    
+                while ($row =$stmt->fetch(PDO::FETCH_ASSOC))
             {
                 #print_r($row);
                 echo("<option value=".$row["bookid"].">".$row["title"]."</option>");
             }
-    ?>
+                }
+                
+            ?>
+ 
     </select>
     <br>
 
