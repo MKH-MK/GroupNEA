@@ -17,7 +17,7 @@ try {
     
     $stmt->execute();
     
-    $stmt = $conn->prepare("UPDATE tblbooks SET available = available - 1 WHERE bookid = :bookid");
+    $stmt = $conn->prepare("UPDATE tblbooks SET available = available + 1 WHERE bookid = :bookid");
     $stmt->bindParam(':bookid', $_POST["bookid"]);
     $stmt->execute();
     

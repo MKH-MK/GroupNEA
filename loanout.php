@@ -6,6 +6,7 @@
 <body>
     
     <form action="loanoutpost.php" method = "post">
+    <label for="userid">Select user:</label>
     <select name ="userid">
     
     <?php
@@ -22,6 +23,8 @@
     ?>
     </select>
     <br>
+
+    <label for="bookid">Select Book:</label>
     <select name ="bookid">
     
     <?php

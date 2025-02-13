@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
-<title>Loan out a book as student</title>
+<title>Hand in a book as student</title>
     
 </head>
 <body>
     
     <form action="loaninpost.php" method = "post">
+    <label for="userid">Select Student:</label>
     <select name ="userid">
     
     <?php
@@ -22,14 +23,17 @@
     ?>
     </select>
     <br>
+
+    <label for="bookid">Select Book:</label>
     <select name ="bookid">
     
     <?php
         
         include_once("connection.php");
        
-        $stmt = $conn->prepare("SELECT * FROM tblbooks WHERE available>0 ORDER BY title ASC");
+        $stmt = $conn->prepare("SELECT l.bookid, b.title FROM tblstudentloans l INNER JOIN tblbooks b ON l.bookid = b.bookid ORDER BY b.title ASC");
         $stmt->execute();
+            
         
         while ($row =$stmt->fetch(PDO::FETCH_ASSOC))
             {
@@ -40,27 +44,9 @@
     </select>
     <br>
 
-    <input type="date" name="endloan" required>
-    <br>
-    <input type="submit" value="Confirm Loan">
+    <input type="submit" value="Confirm hand in">
 
 </form>
-
-<h2>Current Loaning:</h2>
-    
-    <?php
-    
-    include_once("connection.php");
-    
-    $stmt = $conn->prepare("SELECT * FROM tblstudentloans");
-    $stmt->execute();
-    
-    while ($row =$stmt->fetch(PDO::FETCH_ASSOC))
-        {   
-            #print_r($row);
-            echo("<h4>"."Loan ID: ".$row["loanid"]." Book ID: ".$row["bookid"].". User loaning out: ".$row["userid"]."</h4>");
-        }
-    ?>
 
 </body>
 </html>
